@@ -2,6 +2,7 @@ import { css, Global} from "@emotion/react"
 
 const estilos = css`
     *{
+        background-color: #4651EA;
         font-family: 'Poppins', sans-serif;
     }
 `

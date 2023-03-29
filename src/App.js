@@ -1,16 +1,13 @@
-import { Card } from "./componetes/Card/LeftCard";
-import { RigthCard } from "./componetes/Card/RigthCard";
 import { Estilos } from "./componetes/EstilosGloais/Estilos";
+import { Card } from "./componetes/Card/RegisterCard"
 
 function App() {
   return (
     <div>
-      <Estilos/>
-      <RigthCard>
-      </RigthCard>
-      <Card>
-        <h1>Registro de Novos Usuarios</h1>
-      </Card>
+      <Estilos></Estilos>
+        <Card>
+          
+        </Card>
       
     </div>
   );
