@@ -1,15 +1,16 @@
 import { Estilos } from "./componetes/EstilosGloais/Estilos";
 import { Card } from "./componetes/Card/RegisterCard"
+import { ProvedorTema } from "./componetes/ProvedorTema/ProvedorTema";
 
 function App() {
   return (
-    <div>
+    <ProvedorTema>
       <Estilos></Estilos>
         <Card>
           
         </Card>
       
-    </div>
+    </ProvedorTema>
   );
 }
 

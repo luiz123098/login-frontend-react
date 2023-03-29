@@ -1,5 +1,5 @@
 import styled from "@emotion/styled"
-
+import InputMask from "react-input-mask";
 
 
 const BlueDiv = styled.div`
@@ -99,28 +99,30 @@ outline: none;
 }
 `
 
-const InputCPF = styled.input`
-position: absolute;
-width: 50%;
-height: 8%;
-left: 40%;
-top: 65%;
-background: #4651ea;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 40px;
-padding: 10px;
-font-size: 16px;
-color: #fff;
-border: none;
-outline: none;
-
-&::placeholder {
-  color: #fff;
-}
-`
-
-const RegisterButton = styled.button`
+const InputCPF = styled(InputMask)`
   position: absolute;
+  width: 50%;
+  height: 8%;
+  left: 40%;
+  top: 65%;
+  background: #4651ea;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  border: none;
+  outline: none;
+
+  &::placeholder {
+    color: #fff;
+  }
+  const handleChange = (event) => {
+    onChange(event.target.value);
+  };
+}`
+const RegisterButton = styled.button`
+  position: inherit;
   bottom: 10%;
   left: 50%;
   transform: translateX(30%);
@@ -140,7 +142,7 @@ const RegisterButton = styled.button`
 `
 
 const LogInButton = styled.button`
-  position: absolute;
+  position: inherit;
   bottom: 10%;
   left: 50%;
   transform: translateX(-50%);
@@ -228,8 +230,6 @@ font-size: 130%;
 line-height: 100%;
 text-align: center;
 `
-
-
 export const Card = ({ children }) => {
      return (
 
@@ -252,9 +252,10 @@ export const Card = ({ children }) => {
                     onFocus={(event) => (event.target.value = "")}
                 />
                 <InputCPF
-                    id="cpf"
-                    placeholder="cpf"
-                    onFocus={(event) => (event.target.value = "")}
+                  mask="999.999.999-99"
+                  value={InputCPF.value}
+                  onChange={InputCPF.handleChange}
+                  placeholder="CPF"
                 />
                 <RegisterButton>CADASTRAR</RegisterButton>
             <BlueDiv>
@@ -265,4 +266,5 @@ export const Card = ({ children }) => {
             </BlueDiv>
             </WhiteDiv>
             )
-}
+  }
+
