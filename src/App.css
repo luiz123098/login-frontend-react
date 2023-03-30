@@ -5,6 +5,7 @@
   height: 2px;
   width: 60%;
   top: 50%;
+  position: inherit;
   left: 20%;
   background-color: #fff;
 }

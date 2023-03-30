@@ -1,6 +1,6 @@
 import styled from "@emotion/styled"
 import InputMask from "react-input-mask";
-
+import { register } from './RegisterFunctionsJS'
 
 const BlueDiv = styled.div`
 position: absolute;
@@ -236,18 +236,22 @@ export const Card = ({ children }) => {
             <WhiteDiv>
                 <FisrtLabeTxt>Crie sua Conta</FisrtLabeTxt>
                 <SecondLabel>Preencha o formuário</SecondLabel>
+                <form onSubmit={register}>
                 <InputLogin
                     id="login"
+                    value={'login'}
                     placeholder="email"
                     onFocus={(event) => (event.target.value = "")}         
                 />
                 <InputPassword
-                    id="passowrd"
+                    id="password"
+                    value={'password'}
                     placeholder="senha"
                     onFocus={(event) => (event.target.value = "")}
                 />
                 <InputName
                     id="name"
+                    value={'nameUser'}
                     placeholder="nome"
                     onFocus={(event) => (event.target.value = "")}
                 />
@@ -257,7 +261,8 @@ export const Card = ({ children }) => {
                   onChange={InputCPF.handleChange}
                   placeholder="CPF"
                 />
-                <RegisterButton>CADASTRAR</RegisterButton>
+                <RegisterButton type="submit">CADASTRAR</RegisterButton>
+                </form>
             <BlueDiv>
             <TrhirdLabel>Seja Bem Vindo!</TrhirdLabel>
             <ForfthLabel>Acesse sua Conta agora mesmo.</ForfthLabel>
