@@ -1,6 +1,7 @@
 import styled from "@emotion/styled"
 import InputMask from "react-input-mask";
-import { register } from './RegisterFunctionsJS'
+import { useState } from "react";
+import axios from "axios";
 
 const BlueDiv = styled.div`
 position: absolute;
@@ -122,7 +123,7 @@ const InputCPF = styled(InputMask)`
   };
 }`
 const RegisterButton = styled.button`
-  position: inherit;
+  position: absolute;
   bottom: 10%;
   left: 50%;
   transform: translateX(30%);
@@ -231,45 +232,74 @@ line-height: 100%;
 text-align: center;
 `
 export const Card = ({ children }) => {
-     return (
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [cpf, setCpf] = useState("");
 
-            <WhiteDiv>
-                <FisrtLabeTxt>Crie sua Conta</FisrtLabeTxt>
-                <SecondLabel>Preencha o formuário</SecondLabel>
-                <form onSubmit={register}>
-                <InputLogin
-                    id="login"
-                    value={'login'}
-                    placeholder="email"
-                    onFocus={(event) => (event.target.value = "")}         
-                />
-                <InputPassword
-                    id="password"
-                    value={'password'}
-                    placeholder="senha"
-                    onFocus={(event) => (event.target.value = "")}
-                />
-                <InputName
-                    id="name"
-                    value={'nameUser'}
-                    placeholder="nome"
-                    onFocus={(event) => (event.target.value = "")}
-                />
-                <InputCPF
-                  mask="999.999.999-99"
-                  value={InputCPF.value}
-                  onChange={InputCPF.handleChange}
-                  placeholder="CPF"
-                />
-                <RegisterButton type="submit">CADASTRAR</RegisterButton>
-                </form>
-            <BlueDiv>
-            <TrhirdLabel>Seja Bem Vindo!</TrhirdLabel>
-            <ForfthLabel>Acesse sua Conta agora mesmo.</ForfthLabel>
-            <LogInButton>ENTRAR</LogInButton>
-                {children}
-            </BlueDiv>
-            </WhiteDiv>
-            )
-  }
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
 
+    const newUser = {
+      login: login,
+      password: password,
+      name: name,
+      cpf: cpf,
+    };
+
+    axios
+      .post("http://localhost:8089/user/register", newUser)
+      .then((response) => {
+        console.log(response);
+        alert("Usuário cadastrado com sucesso!");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Erro ao cadastrar usuário!");
+      });
+  };
+
+  const handleLoginButtonClick = () => {
+    window.location.href = '/login'; // Redireciona para a página de login
+  };
+
+  return (
+    <WhiteDiv>
+      <FisrtLabeTxt>Crie sua Conta</FisrtLabeTxt>
+      <SecondLabel>Preencha o formuário</SecondLabel>
+      <form onSubmit={handleFormSubmit}>
+        <InputLogin
+          id="login"
+          value={login}
+          placeholder="email"
+          onChange={(event) => setLogin(event.target.value)}
+        />
+        <InputPassword
+          id="password"
+          value={password}
+          placeholder="senha"
+          onChange={(event) => setPassword(event.target.value)}
+        />
+        <InputName
+          id="name"
+          value={name}
+          placeholder="nome"
+          onChange={(event) => setName(event.target.value)}
+        />
+        <InputCPF
+          mask="999.999.999-99"
+          value={cpf}
+          placeholder="CPF"
+          onChange={(event) => setCpf(event.target.value)}
+        />
+        <RegisterButton type="submit">CADASTRAR</RegisterButton>
+      </form>
+      <BlueDiv>
+        <TrhirdLabel>Seja Bem Vindo!</TrhirdLabel>
+        <ForfthLabel>Acesse sua Conta agora mesmo.</ForfthLabel>
+        <LogInButton onClick={handleLoginButtonClick}>ENTRAR</LogInButton>
+        {children}
+      </BlueDiv>
+    </WhiteDiv>
+  );
+};

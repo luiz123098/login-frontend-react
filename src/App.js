@@ -1,5 +1,5 @@
 import { Estilos } from "./componetes/EstilosGloais/Estilos";
-import { Card } from "./componetes/Card/RegisterCard"
+import { Card } from "./componetes/Card/Register/RegisterCard"
 import { ProvedorTema } from "./componetes/ProvedorTema/ProvedorTema";
 
 function App() {
