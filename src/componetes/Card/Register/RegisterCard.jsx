@@ -2,64 +2,12 @@ import styled from "@emotion/styled"
 import InputMask from "react-input-mask";
 import { useState } from "react";
 import axios from "axios";
-import { stringify } from "json5";
+import './RegisterStyle.css';
 
-const BlueDiv = styled.div`
-position: absolute;
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
 
-width: 30%;
-height: 100%;
-margin: auto;
-justify-content: center;
-align-items: center;
 
-left: -70%;
-top: 0%;
 
-background: #000CB2;
-border-radius: 40px 0px 0px 16px;
-`
 
-const WhiteDiv = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  height: 90%;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-`
-
-const InputLogin = styled.input`
-position: absolute;
-width: 50%;
-height: 8%;
-left: 40%;
-top: 20%;
-background: #4651ea;
-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-border-radius: 40px;
-padding: 2%;
-font-size: 16px;
-color: #fff;
-border: none;
-outline: none;
-
-&::placeholder {
-  color: #fff;
-}
-`
 
 const InputPassword = styled.input`
 position: absolute;
@@ -254,13 +202,14 @@ export const Card = ({ children }) => {
 
 
   return (
-    <WhiteDiv>
+    <div className="whiteDiv">
       <FisrtLabeTxt>Crie sua Conta</FisrtLabeTxt>
       <SecondLabel>Preencha o formuário</SecondLabel>
       {message && <Message>{message}</Message>}
     
       <form onSubmit={handleFormSubmit}>
-        <InputLogin
+        <input
+          className="inputLogin"
           id="login"
           value={login}
           placeholder="email"
@@ -285,14 +234,13 @@ export const Card = ({ children }) => {
           onChange={(event) => setCpf(event.target.value)}
         />
         <RegisterButton type="submit">CADASTRAR</RegisterButton>
-
       </form>
-      <BlueDiv>
+      <div className="blueDiv">
         <TrhirdLabel>Seja Bem Vindo!</TrhirdLabel>
         <ForfthLabel>Acesse sua Conta agora mesmo.</ForfthLabel>
         
         {children}
-      </BlueDiv>
-    </WhiteDiv>
+      </div>
+    </div>
   );
-};
+};  
