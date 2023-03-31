@@ -2,7 +2,7 @@ import styled from "@emotion/styled"
 import InputMask from "react-input-mask";
 import { useState } from "react";
 import axios from "axios";
-
+import { stringify } from "json5";
 
 const BlueDiv = styled.div`
 position: absolute;
@@ -175,6 +175,22 @@ line-height: 100%;
 text-align: center;
 `
 
+const Message = styled.p`
+position: absolute;
+width: 100%;
+height: 10%;
+left: 15%;
+top: 7%;
+
+background-color: transparent;
+
+font-style: normal;
+font-weight: 400;
+font-size: 120%;
+line-height: 100%;
+text-align: center;
+`
+
 const TrhirdLabel = styled.h1`
 position: absolute;
 width: 100%;
@@ -213,6 +229,7 @@ export const Card = ({ children }) => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [cpf, setCpf] = useState("");
+  const [message, setMessage] = useState("");
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -224,24 +241,24 @@ export const Card = ({ children }) => {
       cpf: cpf,
     };
 
+    setMessage("");
+
     axios
       .post("http://localhost:8089/user/register", newUser)
       .then((response) => {
-        console.log(response);
-        alert("Usuário cadastrado com sucesso!");
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Erro ao cadastrar usuário!");
+        setMessage(response.data.message)
+      }).catch((error) => {
+        setMessage(error.response.data.message)
       });
   };
 
-  
 
   return (
     <WhiteDiv>
       <FisrtLabeTxt>Crie sua Conta</FisrtLabeTxt>
       <SecondLabel>Preencha o formuário</SecondLabel>
+      {message && <Message>{message}</Message>}
+    
       <form onSubmit={handleFormSubmit}>
         <InputLogin
           id="login"
@@ -268,6 +285,7 @@ export const Card = ({ children }) => {
           onChange={(event) => setCpf(event.target.value)}
         />
         <RegisterButton type="submit">CADASTRAR</RegisterButton>
+
       </form>
       <BlueDiv>
         <TrhirdLabel>Seja Bem Vindo!</TrhirdLabel>
