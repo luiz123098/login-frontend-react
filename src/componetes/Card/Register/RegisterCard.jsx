@@ -3,6 +3,7 @@ import InputMask from "react-input-mask";
 import { useState } from "react";
 import axios from "axios";
 
+
 const BlueDiv = styled.div`
 position: absolute;
 top: 0;
@@ -49,7 +50,7 @@ top: 20%;
 background: #4651ea;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 40px;
-padding: 10px;
+padding: 2%;
 font-size: 16px;
 color: #fff;
 border: none;
@@ -69,7 +70,7 @@ top: 35%;
 background: #4651ea;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 40px;
-padding: 10px;
+padding: 2%;
 font-size: 16px;
 color: #fff;
 border: none;
@@ -89,7 +90,7 @@ top: 50%;
 background: #4651ea;
 box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 border-radius: 40px;
-padding: 10px;
+padding: 2%;
 font-size: 16px;
 color: #fff;
 border: none;
@@ -109,7 +110,7 @@ const InputCPF = styled(InputMask)`
   background: #4651ea;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 40px;
-  padding: 10px;
+  padding: 2%;
   font-size: 16px;
   color: #fff;
   border: none;
@@ -142,30 +143,6 @@ const RegisterButton = styled.button`
   }
 `
 
-const LogInButton = styled.button`
-  position: inherit;
-  bottom: 10%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 65%;
-  height: 8%;
-  background-color: #4651EA;
-  border: 2%;
-  border-radius: 40px;
-  font-size: 16px;
-  border-color: #ffffff;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  
-  color: #ffffff; /* adicione essa linha para definir a cor do texto */
-
-  &:hover {
-    background-color: #4651EA;
-    border-color: #ffffff;
-  }
-`;
-
-
 const FisrtLabeTxt = styled.h1`
 position: absolute;
 width: 30%;
@@ -177,8 +154,8 @@ background-color: transparent;
 
 font-style: normal;
 font-weight: 800;
-font-size: 32px;
-line-height: 48px;
+font-size: 120%;
+line-height: 100%;
 text-align: center;
 `
 
@@ -187,14 +164,14 @@ position: absolute;
 width: 30%;
 height: 10%;
 left: 50%;
-top: 4%;
+top: 7%;
 
 background-color: transparent;
 
 font-style: normal;
-font-weight: 800;
-font-size: 100%;
-line-height: 600%;
+font-weight: 400;
+font-size: 120%;
+line-height: 100%;
 text-align: center;
 `
 
@@ -220,14 +197,14 @@ position: absolute;
 width: 80%;
 height: 0%;
 left: 10%;
-top: 43%;
+top: 46%;
 
 color: white;
 background-color: transparent;
 
 font-style: normal;
 font-weight: 500;
-font-size: 130%;
+font-size: 100%;
 line-height: 100%;
 text-align: center;
 `
@@ -259,9 +236,7 @@ export const Card = ({ children }) => {
       });
   };
 
-  const handleLoginButtonClick = () => {
-    window.location.href = '/login'; // Redireciona para a página de login
-  };
+  
 
   return (
     <WhiteDiv>
@@ -297,7 +272,7 @@ export const Card = ({ children }) => {
       <BlueDiv>
         <TrhirdLabel>Seja Bem Vindo!</TrhirdLabel>
         <ForfthLabel>Acesse sua Conta agora mesmo.</ForfthLabel>
-        <LogInButton onClick={handleLoginButtonClick}>ENTRAR</LogInButton>
+        
         {children}
       </BlueDiv>
     </WhiteDiv>
