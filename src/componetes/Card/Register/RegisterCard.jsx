@@ -30,7 +30,7 @@ const InputCPF = styled(InputMask)`
   }
 }`
 
-export const Card = ({ children }) => {
+export const RegisterCard = ({ children }) => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -66,6 +66,7 @@ export const Card = ({ children }) => {
       <label className="secondlabel">Preencha o formuário</label>
     
       <form onSubmit={handleFormSubmit}>
+
          <InputLogin
           className="inputLogin"
           id="login"

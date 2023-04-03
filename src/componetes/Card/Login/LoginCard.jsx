@@ -1,45 +1,9 @@
 import { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import '../../Card/Global.css'
 
-export const BlueDiv = styled.div`
-position: absolute;
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
-
-width: 30%;
-height: 100%;
-margin: auto;
-justify-content: center;
-align-items: center;
-
-left: -70%;
-top: 0%;
-
-background: #000CB2;
-border-radius: 40px 0px 0px 16px;
-`
-
-export const WhiteDiv = styled.div`
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60%;
-  height: 90%;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.8);
-  box-shadow: 3px 4px 10px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-`
-
-const LoginPage = () => {
+export const LoginPage = () => {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
@@ -65,7 +29,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className={WhiteDiv}>
+    <div className ='WhiteDiv'>
       <h1>Faça login na sua conta</h1>
       {user ? (
         <>
@@ -98,11 +62,9 @@ const LoginPage = () => {
           {errorMessage && <p>{errorMessage}</p>}
         </form>
       )}
-      <div className={BlueDiv}>
+      <div className ='BlueDiv'>
       <button onClick={handleRegisterButtonClick}>
         Ainda não tem uma conta? Registre</button>            
         </div>
         </div>
 )}
-
-export default LoginPage
