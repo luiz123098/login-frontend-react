@@ -3,7 +3,8 @@ import InputMask from "react-input-mask";
 import { useState } from "react";
 import axios from "axios";
 import './RegisterStyle.css';
-
+import '../../Card/Global.css'
+  
 const InputLogin = styled.input`
   &::placeholder {
     color: #fff; /* Define a cor branca */
