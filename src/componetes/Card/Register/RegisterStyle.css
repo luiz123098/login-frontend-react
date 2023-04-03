@@ -80,7 +80,7 @@ text-align: center;
 }
 .loginButton{
   position: relative;
-  bottom: -83%;
+  bottom: -82%;
   transform: translateX(50%);
   width: 50%;
   height: 8%;
