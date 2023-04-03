@@ -1,7 +1,20 @@
-import { useState } from "react";
-import axios from "axios";
+import InputMask from "react-input-mask";
 import styled from "styled-components";
+import { useState } from "react";
 import '../../Card/Global.css'
+import axios from "axios";
+
+const InputLogin = styled.input`
+  &::placeholder {
+    color: #fff; /* Define a cor branca */
+}
+`
+
+const InputPassword = styled.input`
+  &::placeholder {
+    color: #fff;
+}
+`
 
 export const LoginPage = () => {
   const [login, setLogin] = useState("");
@@ -29,8 +42,8 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className ='WhiteDiv'>
-      <h1>Faça login na sua conta</h1>
+    <div className ='whiteDiv'>
+      <h1 className="fisrtLabeTxt">Faça login na sua conta</h1>
       {user ? (
         <>
           <p>Seus dados:</p>
@@ -42,29 +55,31 @@ export const LoginPage = () => {
         </>
       ) : (
         <form onSubmit={handleFormSubmit}>
-          <label htmlFor="login">Login:</label>
-          <input
+          <InputLogin
+            className="inputLogin"
             id="login"
             value={login}
             onChange={(event) => setLogin(event.target.value)}
+            placeholder="Email"
           />
 
-          <label htmlFor="password">Senha:</label>
-          <input
+          <InputPassword
+          className="inputPassword"
             id="password"
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
+            placeholder="Senha"
           />
 
-          <button type="submit">Entrar</button>
+          <button className="loginButton" type="submit">Entrar</button>
 
           {errorMessage && <p>{errorMessage}</p>}
         </form>
       )}
-      <div className ='BlueDiv'>
-      <button onClick={handleRegisterButtonClick}>
-        Ainda não tem uma conta? Registre</button>            
+      <div className ='blueDiv'>
+      <button className="loginButton" onClick={handleRegisterButtonClick}>
+        Registre</button>            
         </div>
         </div>
 )}
