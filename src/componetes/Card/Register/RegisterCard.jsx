@@ -37,6 +37,10 @@ export const RegisterCard = ({ children }) => {
   const [cpf, setCpf] = useState("");
   const [message, setMessage] = useState("");
 
+  const handleLoginButtonClick = () => {
+    window.location.href = "/login";
+  };
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -101,6 +105,7 @@ export const RegisterCard = ({ children }) => {
       <div className="blueDiv">
         <label className="trhirdLabel">Seja Bem Vindo!</label>
         <label className= "forfthLabel">Acesse sua Conta agora mesmo.</label>
+        <button className="LoginButton" onClick={handleLoginButtonClick}>Ir para Login</button>    
         
         {children}
       </div>

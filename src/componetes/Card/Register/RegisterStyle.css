@@ -79,6 +79,22 @@ text-align: center;
     transition: all 0.2s ease-in-out;
     
 }
+.LoginButton{
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translateX(30%);
+  width: 20%;
+  height: 8%;
+  background-color: #fff;
+  border: none;
+  border-radius: 40px;
+  font-size: 16px;
+  color: #000CB2;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  
+}
 
 .inputLogin{
   position: absolute;
