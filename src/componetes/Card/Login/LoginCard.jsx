@@ -17,79 +17,81 @@ const InputPassword = styled.input`
 `
 
 export const LoginPage = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
-  const [user, setUser] = useState(null);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [userDTO, setUserDTO] = useState({ login: '', password: '' });
+  const [message, setMessage] = useState('');
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
-    axios
-      .get(`http://localhost:8089/user/consult/{id}}`)
+  
+    setMessage('');
+  
+    axios.get(`http://localhost:8089/login`, { params: userDTO })
       .then((response) => {
-        setUser(response.data);
-        setErrorMessage("");
+        setMessage(response.data.message);
       })
       .catch((error) => {
-        setErrorMessage("Login ou senha incorretos");
-        setUser(null);
+        setMessage(error.response.data.message);
       });
+  };
+  
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserDTO((prevUserDTO) => ({ ...prevUserDTO, [name]: value }));
   };
 
   const handleRegisterButtonClick = () => {
-    window.location.href = "/register";
+    window.location.href = '/register';
   };
 
   return (
-    <div className ='whiteDiv'>
-      <h1 className ="fisrtLabeTxtLoginPage">Faça login na sua conta</h1>
-      <label className ="secondlabelLoginPage">Preencha o formulário</label>
-      {user ? (
-        <>
-          <p>Seus dados:</p>
-          <ul>
-            <li>Nome: {user.name}</li>
-            <li>Login: {user.login}</li>
-            <li>CPF: {user.cpf}</li>
-          </ul>
-        </>
-      ) : (
-        <form onSubmit={handleFormSubmit}>
-          <InputLogin
-            className="inputLoginLoginPage"
-            id="login"
-            value={login}
-            onChange={(event) => setLogin(event.target.value)}
-            placeholder="Email"
-          />
+    <div className="whiteDiv">
+      <h1 className="fisrtLabeTxtLoginPage">Faça login na sua conta</h1>
+      {message && <p className="memessageLoginPagessage">{message}</p>}
+      <label className="secondlabelLoginPage">Preencha o formulário</label>
 
-          <InputPassword
+      <form onSubmit={handleFormSubmit}>
+        <InputLogin
+          className="inputLoginLoginPage"
+          id="login"
+          name="login"
+          value={userDTO.login}
+          onChange={handleInputChange}
+          placeholder="Email"
+        />
+
+        <InputPassword
           className="inputPasswordLoginPage"
-            id="password"
-            type="password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-            placeholder="Senha"
-            />
+          id="password"
+          name="password"
+          type="password"
+          value={userDTO.password}
+          onChange={handleInputChange}
+          placeholder="Senha"
+        />
 
-          <button 
-            className='logInButtonLoginPage' 
-            type="submit">Entrar</button>
+        <button className="logInButtonLoginPage" type="submit">
+          Entrar
+        </button>
+      </form>
 
-          {errorMessage && <p>{errorMessage}</p>}
-        </form>
-      )}
-      <div className ='blueDiv'>
-         <label className ="trhirdLabelLoginPage">Seja Bem Vindo!</label>
-         <label className ="forfthLabelLoginPage">Acesse sua Conta agora mesmo.</label>
-         <label className ="fifthLabelLoginPage">É novo?<br/>crie sua conta aqui</label>
-         <button 
-          className='registerButtonLoginPage' 
-          onClick={handleRegisterButtonClick}>
-          Registre</button>            
-        
-        </div>
-        </div>
-        
-  )}
+      <div className="blueDiv">
+        <label className="trhirdLabelLoginPage">Seja Bem Vindo!</label>
+        <label className="forfthLabelLoginPage">
+          Acesse sua Conta agora mesmo.
+        </label>
+        <label className="fifthLabelLoginPage">
+          É novo?
+          <br />
+          crie sua conta aqui
+        </label>
+        <button
+          className="registerButtonLoginPage"
+          onClick={handleRegisterButtonClick}
+        >
+          Registre
+        </button>
+      </div>
+    </div>
+  );
+};
+
