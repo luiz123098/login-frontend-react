@@ -105,6 +105,7 @@ export const RegisterCard = ({ children }) => {
       <div className="blueDiv">
         <label className="trhirdLabel">Seja Bem Vindo!</label>
         <label className= "forfthLabel">Acesse sua Conta agora mesmo.</label>
+        <label className= "fifthLabel">Ja possui uma conta?<br/>acesse aqui</label>
         <button className="loginButton" onClick={handleLoginButtonClick}>Ir para Login</button>    
         
         {children}

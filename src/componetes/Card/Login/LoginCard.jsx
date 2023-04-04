@@ -1,7 +1,7 @@
-import InputMask from "react-input-mask";
 import styled from "styled-components";
 import { useState } from "react";
 import '../../Card/Global.css'
+import './LoginStyled.css'
 import axios from "axios";
 
 const InputLogin = styled.input`
@@ -43,7 +43,8 @@ export const LoginPage = () => {
 
   return (
     <div className ='whiteDiv'>
-      <h1 className="fisrtLabeTxt">Faça login na sua conta</h1>
+      <h1 className ="fisrtLabeTxtLoginPage">Faça login na sua conta</h1>
+      <label className ="secondlabelLoginPage">Preencha o formulário</label>
       {user ? (
         <>
           <p>Seus dados:</p>
@@ -56,7 +57,7 @@ export const LoginPage = () => {
       ) : (
         <form onSubmit={handleFormSubmit}>
           <InputLogin
-            className="inputLogin"
+            className="inputLoginLoginPage"
             id="login"
             value={login}
             onChange={(event) => setLogin(event.target.value)}
@@ -64,22 +65,31 @@ export const LoginPage = () => {
           />
 
           <InputPassword
-          className="inputPassword"
+          className="inputPasswordLoginPage"
             id="password"
             type="password"
             value={password}
             onChange={(event) => setPassword(event.target.value)}
             placeholder="Senha"
-          />
+            />
 
-          <button className="loginButton" type="submit">Entrar</button>
+          <button 
+            className='logInButtonLoginPage' 
+            type="submit">Entrar</button>
 
           {errorMessage && <p>{errorMessage}</p>}
         </form>
       )}
       <div className ='blueDiv'>
-      <button className="loginButton" onClick={handleRegisterButtonClick}>
-        Registre</button>            
+         <label className ="trhirdLabelLoginPage">Seja Bem Vindo!</label>
+         <label className ="forfthLabelLoginPage">Acesse sua Conta agora mesmo.</label>
+         <label className ="fifthLabelLoginPage">É novo?<br/>crie sua conta aqui</label>
+         <button 
+          className='registerButtonLoginPage' 
+          onClick={handleRegisterButtonClick}>
+          Registre</button>            
+        
         </div>
         </div>
-)}
+        
+  )}
