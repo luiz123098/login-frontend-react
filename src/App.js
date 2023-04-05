@@ -1,8 +1,10 @@
-import { Estilos } from "./componetes/EstilosGloais/Estilos";
-import { RegisterCard } from "./componetes/Card/Register/RegisterCard"
+import { Estilos } from "./componetes/ProvedorTema/Estilos";
+import { RegisterPage } from "./componetes/Card/Register/RegisterCard"
 import { LoginPage } from "./componetes/Card/Login/LoginCard"
+import { HomePage } from "./componetes/Card/Home/HomeCard";
 import { ProvedorTema } from "./componetes/ProvedorTema/ProvedorTema";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { AboutPage } from "./componetes/Card/About/AboutCard";
 
 /*import { LogInButton } from "./componetes/Card/Login/LoginStyled";*/
 /*import { LoginPage } from "./componetes/Card/Login/LoginCard";*/
@@ -22,8 +24,10 @@ function App() {
   <Estilos/>
       <Router>
         <Routes>
-          <Route path="/register" element={<RegisterCard/>}/>
+          <Route path="/register" element={<RegisterPage/>}/>
           <Route path="/login" element={<LoginPage/>}/>
+          <Route path="/" element={<HomePage/>}/>
+          <Route path="/about" element={<AboutPage/>}/>
         </Routes>
       </Router>
 </ProvedorTema>      
