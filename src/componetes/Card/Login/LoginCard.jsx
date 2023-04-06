@@ -18,24 +18,28 @@ const InputPassword = styled.input`
 `
 
 export const LoginPage = () => {
-  const [login, setLogin] = useState("");
-  const [password, setPassword] = useState("");
+  const [userDTO, setUserDTO] = useState({ login: '', password: '' });
   const [message, setMessage] = useState('');
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-
-    axios.post(`http://localhost:8089/user/login`, { login, password })
+  
+    setMessage('');
+  
+    axios.get(`http://localhost:8089/user/login`, { params: userDTO })
       .then((response) => {
-        setMessage('Login bem sucedido');
-        // vai pro home IHUUUUUU
-        window.location.href = '/home';
+        setMessage(response.data.message);  
       })
       .catch((error) => {
         setMessage('Ocorreu um erro ao entrar');
       });
   };
   
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUserDTO((prevUserDTO) => ({ ...prevUserDTO, [name]: value }));
+  };
+
   const handleRegisterButtonClick = () => {
     window.location.href = '/register';
   };
@@ -61,8 +65,8 @@ export const LoginPage = () => {
           className="inputLoginLoginPage"
           id="login"
           name="login"
-          value={login}
-          onChange={(event) => setLogin(event.target.value)}
+          value={userDTO.login}
+          onChange={handleInputChange}
           placeholder="Email"
         />
 
@@ -71,14 +75,13 @@ export const LoginPage = () => {
           id="password"
           name="password"
           type="password"
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
+          value={userDTO.password}
+          onChange={handleInputChange}
           placeholder="Senha"
         />
         {message && <p className="messageLogin">{message}</p>}
         <button className="logInButtonLoginPage" 
-        onClick={handleFormSubmit}
-        type="submit">
+        onClick={handleFormSubmit}>
           Entrar
         </button>
       </form>
