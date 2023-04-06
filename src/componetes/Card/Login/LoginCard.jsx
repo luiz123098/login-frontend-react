@@ -18,28 +18,24 @@ const InputPassword = styled.input`
 `
 
 export const LoginPage = () => {
-  const [userDTO, setUserDTO] = useState({ login: '', password: '' });
+  const [login, setLogin] = useState("");
+  const [password, setPassword] = useState("");
   const [message, setMessage] = useState('');
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-  
-    setMessage('');
-  
-    axios.get(`http://localhost:8089/user/login`, { params: userDTO })
+
+    axios.get(`http://localhost:8089/user/login`, { login, password })
       .then((response) => {
-        setMessage(response.data.message);
+        setMessage('Login bem sucedido');
+        // vai pro home IHUUUUUU
+        window.location.href = '/home';
       })
       .catch((error) => {
         setMessage('Ocorreu um erro ao entrar');
       });
   };
   
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUserDTO((prevUserDTO) => ({ ...prevUserDTO, [name]: value }));
-  };
-
   const handleRegisterButtonClick = () => {
     window.location.href = '/register';
   };
@@ -65,8 +61,8 @@ export const LoginPage = () => {
           className="inputLoginLoginPage"
           id="login"
           name="login"
-          value={userDTO.login}
-          onChange={handleInputChange}
+          value={login}
+          onChange={(event) => setLogin(event.target.value)}
           placeholder="Email"
         />
 
@@ -75,8 +71,8 @@ export const LoginPage = () => {
           id="password"
           name="password"
           type="password"
-          value={userDTO.password}
-          onChange={handleInputChange}
+          value={password}
+          onChange={(event) => setPassword(event.target.value)}
           placeholder="Senha"
         />
         {message && <p className="messageLogin">{message}</p>}
