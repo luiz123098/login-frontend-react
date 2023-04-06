@@ -26,12 +26,12 @@ export const LoginPage = () => {
   
     setMessage('');
   
-    axios.get(`http://localhost:8089/login`, { params: userDTO })
+    axios.get(`http://localhost:8089/user/login`, { params: userDTO })
       .then((response) => {
         setMessage(response.data.message);
       })
       .catch((error) => {
-        setMessage(error.response.data.message);
+        setMessage('Ocorreu um erro ao entrar');
       });
   };
   
@@ -57,8 +57,8 @@ export const LoginPage = () => {
 
     <div className="whiteDiv">
       <h1 className="fisrtLabeTxtLoginPage">Faça login na sua conta</h1>
-      {message && <p className="memessageLoginPagessage">{message}</p>}
       <label className="secondlabelLoginPage">Preencha o formulário</label>
+        
 
       <form onSubmit={handleFormSubmit}>
         <InputLogin
@@ -79,13 +79,16 @@ export const LoginPage = () => {
           onChange={handleInputChange}
           placeholder="Senha"
         />
-
-        <button className="logInButtonLoginPage" type="submit">
+        {message && <p className="messageLogin">{message}</p>}
+        <button className="logInButtonLoginPage" 
+        onClick={handleFormSubmit}
+        type="submit">
           Entrar
         </button>
       </form>
-
       <div className="blueDiv">
+      
+
         <label className="trhirdLabelLoginPage">Seja Bem Vindo!</label>
         <label className="forfthLabelLoginPage">
           Acesse sua Conta agora mesmo.

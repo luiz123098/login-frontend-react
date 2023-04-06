@@ -143,3 +143,20 @@ text-align: center;
   border: none;
   outline: none;
 }
+
+.messageLogin{
+  position: absolute;
+  width: 100%;
+  height: 30%;
+  left: 15%;
+  top: 15%;
+  
+  background-color: transparent;
+  color: red;
+
+  font-style: normal;
+  font-weight: 400;
+  font-size: 120%;
+  line-height: 100%;
+  text-align: center;
+  }

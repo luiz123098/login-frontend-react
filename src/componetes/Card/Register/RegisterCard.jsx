@@ -110,7 +110,7 @@ export const RegisterPage = ({ children }) => {
           placeholder="CPF"
           onChange={(event) => setCpf(event.target.value)}
         /> 
-        <button className="registerButton" type="submit">CADASTRAR</button>
+        <button className="registerButton" onClick={handleLoginButtonClick} type="submit">CADASTRAR</button>
       </form>
       <div className="blueDiv">
         <label className="trhirdLabel">Seja Bem Vindo!</label>
