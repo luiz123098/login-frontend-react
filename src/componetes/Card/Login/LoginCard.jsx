@@ -25,7 +25,7 @@ export const LoginPage = () => {
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    axios.get(`http://localhost:8089/user/login`, { login, password })
+    axios.post(`http://localhost:8089/user/login`, { login, password })
       .then((response) => {
         setMessage('Login bem sucedido');
         // vai pro home IHUUUUUU
