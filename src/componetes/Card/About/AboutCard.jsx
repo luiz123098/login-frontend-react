@@ -11,13 +11,10 @@ export const AboutPage = () => {
       <li><a href="/register">Registre-se</a></li>
     </ul>
   </nav>
-        <div className="whiteDiv">
   <label className="Label">
     Sobre A empresa
   </label>
-  <div className="blueDiv"></div>
         <label className="labelw">infos</label>
         </div>
-        </div>
     )
-}
+};
