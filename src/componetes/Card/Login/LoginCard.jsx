@@ -20,7 +20,6 @@ const InputPassword = styled.input`
 export const LoginPage = () => {
   const [userDTO, setUserDTO] = useState({ login: '', password: '' });
   const [message, setMessage] = useState('');
-  const [ isLoggedIn ] = useState('');
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
@@ -29,22 +28,12 @@ export const LoginPage = () => {
   
     axios.get(`http://localhost:8089/user/login`, { params: userDTO })
       .then((response) => {
-        sessionStorage.setItem(isLoggedIn, true);
-        sessionStorage.setItem(response.data.userDTO);
-
         setMessage(response.data.message);  
       })
       .catch((error) => {
-        sessionStorage.setItem(isLoggedIn, false);
         setMessage('Ocorreu um erro ao entrar');
       });
-      
   };
-
-  const logout = () => {
-    sessionStorage.setItem(isLoggedIn, false);
-    sessionStorage.removeItem(handleFormSubmit.response.data.userDTO)
-  }
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -63,7 +52,6 @@ export const LoginPage = () => {
   <li><a href="/about">Sobre Nós</a></li>
   <li><a href="/login">Login</a></li>
   <li><a href="/register">Registre-se</a></li>
-  <li><button onClick={logout}>Logout</button></li>
 </ul>
 </nav>
 
