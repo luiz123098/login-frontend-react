@@ -5,7 +5,7 @@ import { HomePage } from "./componetes/Card/Home/HomeCard";
 import { ProvedorTema } from "./componetes/ProvedorTema/ProvedorTema";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AboutPage } from "./componetes/Card/About/AboutCard";
-import { Profile } from "./componetes/Card/Profile/ProfileCard";
+import { UserPage } from "./componetes/Card/User/UserCard";
 
 function App() {
 
@@ -19,7 +19,7 @@ function App() {
             <Route path="/login" element={<LoginPage/>}/>
             <Route path="/" element={<HomePage/>}/>
             <Route path="/about" element={<AboutPage/>}/>
-            <Route path="/Profile" element={<Profile/>}/>
+            <Route path="/user" element={<UserPage/>}/>
           </Routes>
         </Router>
   </ProvedorTema>   

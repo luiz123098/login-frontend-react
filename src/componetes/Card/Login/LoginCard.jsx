@@ -52,6 +52,7 @@ export const LoginPage = () => {
   <li><a href="/about">Sobre Nós</a></li>
   <li><a href="/login">Login</a></li>
   <li><a href="/register">Registre-se</a></li>
+  <li><a href="/user">User</a></li>
 </ul>
 </nav>
 

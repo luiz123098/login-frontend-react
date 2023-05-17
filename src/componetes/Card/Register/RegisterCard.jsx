@@ -66,22 +66,23 @@ export const RegisterPage = ({ children }) => {
   return (
     <div>
       <nav>
-  <ul>
-    <li><a href="/">Página Inicial</a></li>
-    <li><a href="/about">Sobre Nós</a></li>
-    <li><a href="/login">Login</a></li>
-    <li><a href="/register">Registre-se</a></li>
-  </ul>
-</nav>
+        <ul>
+          <li><a href="/">Página Inicial</a></li>
+          <li><a href="/about">Sobre Nós</a></li>
+          <li><a href="/login">Login</a></li>
+          <li><a href="/register">Registre-se</a></li>
+          <li><a href="/user">User</a></li>
+        </ul>
+      </nav>
 
-    <div className="whiteDiv">
-      <label className="fisrtLabeTxt">Crie sua Conta</label>
-      {message && <p className="message">{message}</p>}
-      <label className="secondlabel">Preencha o formuário</label>
+      <div className="whiteDiv">
+        <label className="fisrtLabeTxt">Crie sua Conta</label>
+        {message && <p className="message">{message}</p>}
+        <label className="secondlabel">Preencha o formuário</label>
     
-      <form onSubmit={handleFormSubmit}>
+        <form onSubmit={handleFormSubmit}>
 
-         <InputLogin
+        <InputLogin
           className="inputLogin"
           id="login"
           value={login}
@@ -111,16 +112,16 @@ export const RegisterPage = ({ children }) => {
           onChange={(event) => setCpf(event.target.value)}
         /> 
         <button className="registerButton" onClick={handleLoginButtonClick} type="submit">CADASTRAR</button>
-      </form>
-      <div className="blueDiv">
-        <label className="trhirdLabel">Seja Bem Vindo!</label>
-        <label className= "forfthLabel">Acesse sua Conta agora mesmo.</label>
-        <label className= "fifthLabel">Ja possui uma conta?<br/>acesse aqui</label>
-        <button className="loginButton" onClick={handleLoginButtonClick}>Ir para Login</button>    
+        </form>
+        <div className="blueDiv">
+          <label className="trhirdLabel">Seja Bem Vindo!</label>
+          <label className= "forfthLabel">Acesse sua Conta agora mesmo.</label>
+          <label className= "fifthLabel">Ja possui uma conta?<br/>acesse aqui</label>
+          <button className="loginButton" onClick={handleLoginButtonClick}>Ir para Login</button>    
         
-        {children}
+          {children}
+        </div>
       </div>
-    </div>
     </div>
   );
 };  
